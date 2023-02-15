@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Formulario Reactivo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+   
+<app-mycard [listaRec1]="listaLibros"></app-mycard>
+ 
+
+
+  <ion-card>
+    
+    <ion-card-header>
+    <ion-card-title>Ingreso de Libros</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <form [formGroup]="formLibro" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="floating">Titulo <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input   formControlName="titulo" type="text"></ion-input>
+        
+              <ion-note slot="error" *ngIf="tituloctrl?.touched"  >
+                <span *ngIf="tituloctrl?.errors?.['required']">Es Requerido</span>
+                <span *ngIf="tituloctrl?.errors?.['minlength']">Mínimo 3 carácteres</span>
+                <span *ngIf="tituloctrl?.errors?.['maxlength']">Máximo 15 carácteres</span>
+              </ion-note>
+        
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Precio <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input   formControlName="precio" type="number"></ion-input>
+
+              <ion-note slot="error" *ngIf="precioctrl?.touched"  >
+                <span *ngIf="precioctrl?.errors?.['required']">Es Requerido</span>
+                <span *ngIf="precioctrl?.errors?.['min']">Mínimo $0 </span>
+                <span *ngIf="precioctrl?.errors?.['max']">Máximo $200 </span>
+              </ion-note>
+
+        </ion-item>
+    
+    
+        <ion-item>
+          <ion-label>Formato</ion-label>
+          <ion-select formControlName="tipo" >
+            <ion-select-option value="digital">Digital</ion-select-option>
+            <ion-select-option value="fisico">Físico</ion-select-option>
+            <ion-select-option value="ambos">Ambos</ion-select-option>
+          </ion-select>
+
+              <ion-note slot="error" *ngIf="tipoctrl?.touched"  >
+                <span *ngIf="tipoctrl?.errors?.['required']">Es Requerido</span>
+              </ion-note>
+
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="floating">Descripcion <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input   formControlName="descripcion" type="text"></ion-input>
+            <ion-note slot="error" *ngIf="descctrl?.touched"  >
+              <span *ngIf="descctrl?.errors?.['required']">Es Requerido</span>
+ 
+            </ion-note>
+        </ion-item>
+    
+    
+        <ion-item>
+          <ion-label position="floating">Slug <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input   formControlName="slug" type="text"></ion-input>
+              <ion-note slot="error" *ngIf="slugctrl?.touched"  >
+                <span *ngIf="slugctrl?.errors?.['required']">Es Requerido</span>
+                <span *ngIf="slugctrl?.errors?.['minlength']">Mínimo 3  carácteres</span>
+                <span *ngIf="slugctrl?.errors?.['maxlength']">Máximo 10 carácteres</span>
+              </ion-note>
+        </ion-item>
+    
+      
+        <ion-button block color="primary" type="submit" [disabled]="formLibro.invalid">
+          Enviar
+        </ion-button>
+      </form>
+    </ion-card-content>
+
+  
+  </ion-card>
+  
+</ion-content>
+  

@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Formulario Plantilla
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <app-mycard [listaRec1]="listaLibros"></app-mycard> 
+
+
+  <ion-card>
+    
+    <ion-card-header>
+    <ion-card-title>Ingreso de Libros</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <form #formLibro="ngForm" (ngSubmit)="guardar(formLibro) ">
+          <ion-item>
+          <ion-label position="floating">Titulo <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required name="forTitulo" #newTitulo="ngModel" [(ngModel)]="lista.titulo" type="text" minlength= 3 maxlength= 15></ion-input>
+
+              <ion-note slot="error"  *ngIf="newTitulo.touched">
+                <span *ngIf="newTitulo.errors?.['required']">Es Requerido</span>
+                <span *ngIf="newTitulo.errors?.['minlength']">Mínimo 3 carácteres</span>
+                <span *ngIf="newTitulo.errors?.['maxlength']">Máximo 15 carácteres</span>
+              </ion-note>
+        </ion-item>
+         
+
+       
+        <ion-item>
+          <ion-label position="floating">Precio <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input number required name="forPrecio" #newPrecio="ngModel" [(ngModel)]="lista.precio" type="number"   min="1" max="200" ></ion-input>
+
+         
+
+              <ion-note  slot="error"  *ngIf="newPrecio.touched">
+                <span *ngIf="newPrecio.errors?.['required']">Es Requerido</span>
+                <!-- <span *ngIf="newPrecio.errors?.['number']" >Mínimo $0</span> -->
+                <span *ngIf="newPrecio.errors?.['min']">Minimo $0</span>
+                <span *ngIf="newPrecio.errors?.['max']">Máximo $200</span>
+              </ion-note>
+
+        </ion-item>
+    
+     
+        <ion-item>
+          <ion-label>Formato</ion-label>
+          <ion-select required name="forTipo" #newTipo="ngModel" [(ngModel)]="lista.tipo"    >
+            <ion-select-option value="digital">Digital</ion-select-option>
+            <ion-select-option value="fisico">Físico</ion-select-option>
+            <ion-select-option value="ambos">Ambos</ion-select-option>
+          </ion-select>
+
+              <ion-note slot="error"  *ngIf="newTipo.touched">
+                <span *ngIf="newTipo.errors?.['required']">Es Requerido</span>
+              </ion-note>
+
+        </ion-item>
+     
+        <ion-item>
+          <ion-label position="floating">Descripcion <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input   required name="forDescripcion" #newDescripcion="ngModel" [(ngModel)]="lista.descripcion" type="text"></ion-input>
+              <ion-note slot="error"  *ngIf="newDescripcion.touched">
+                <span *ngIf="newDescripcion.errors?.['required']">Es Requerido</span>
+              </ion-note>
+        </ion-item>
+    
+ 
+        <ion-item>
+          <ion-label position="floating">Slug <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input  required name="forSlug" #newSlug="ngModel" [(ngModel)]="lista.slug" type="text" minlength= 3 maxlength= 10></ion-input>
+
+
+              <ion-note slot="error"  *ngIf="newSlug.touched">
+                <span *ngIf="newSlug.errors?.['required']">Es Requerido</span>
+                <span *ngIf="newSlug.errors?.['minlength']">Mínimo 3  carácteres</span>
+                <span *ngIf="newSlug.errors?.['maxlength']">Máximo 10 carácteres</span>
+              </ion-note>
+        </ion-item>
+    
+       
+        <ion-button block color="primary" type="submit" [disabled]="formLibro.form.invalid"   >
+          Enviar
+        </ion-button> -->
+      </form>
+    </ion-card-content>
+
+  
+  </ion-card> 
+  
+</ion-content>
