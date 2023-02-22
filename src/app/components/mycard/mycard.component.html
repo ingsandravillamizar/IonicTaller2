@@ -2,15 +2,17 @@
 
   <ion-grid fixed>
     <ion-row>
-      <ion-col size = "12" size-md="4" *ngFor="let item of listaRec1"> 
+      <ion-col size = "12" size-md="4" *ngFor="let item of listaRec1; let index"> 
         <ion-card>
           <ion-card-header>
            <ion-card-subtitle>Precio: {{item.precio}}</ion-card-subtitle>
            <ion-card-title>Titulo: {{item.titulo}} </ion-card-title>
           </ion-card-header>
           <ion-card-content>
+            
+            <ion-img  src ="https://source.unsplash.com/random"></ion-img> 
+            <!-- <ion-img  [src] ="'https://picsum.photos/80/80?random=' + index"></ion-img> -->
         
-          
            <ion-list lines="inset">
              <ion-item>
                <ion-label><strong>Descripcion</strong></ion-label>

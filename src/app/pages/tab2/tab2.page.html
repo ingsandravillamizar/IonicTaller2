@@ -77,6 +77,7 @@
                 <span *ngIf="slugctrl?.errors?.['required']">Es Requerido</span>
                 <span *ngIf="slugctrl?.errors?.['minlength']">Mínimo 3  carácteres</span>
                 <span *ngIf="slugctrl?.errors?.['maxlength']">Máximo 10 carácteres</span>
+                <span *ngIf="slugctrl?.errors?.['ValidatorEspacios']">No se admiten espacios</span>
               </ion-note>
         </ion-item>
     

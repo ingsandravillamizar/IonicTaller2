@@ -1,15 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Formulario Plantilla
-    </ion-title>
+    <ion-title>Ejercicio</ion-title>
+    
   </ion-toolbar>
+  <ion-searchbar #search (ionChange)="busqueda(search.value)" placeholder="Filtrar libro"   showCancelButton="always"></ion-searchbar>
 </ion-header>
 
 
 <ion-content>
 
-  <app-mycard [listaRec1]="listaLibros"></app-mycard> 
+  <app-mycard [listaRec1]="listaFiltrados"></app-mycard> 
 
 
   <ion-card>
@@ -22,7 +22,7 @@
       <form #formLibro="ngForm" (ngSubmit)="guardar(formLibro) ">
           <ion-item>
           <ion-label position="floating">Titulo <ion-text color="danger">*</ion-text></ion-label>
-          <ion-input required name="forTitulo" #newTitulo="ngModel" [(ngModel)]="lista.titulo" type="text" minlength= 3 maxlength= 15></ion-input>
+          <ion-input required name="forTitulo" #newTitulo="ngModel" [(ngModel)]="libro.titulo" type="text" minlength= 3 maxlength= 15></ion-input>
 
               <ion-note slot="error"  *ngIf="newTitulo.touched">
                 <span *ngIf="newTitulo.errors?.['required']">Es Requerido</span>
@@ -35,7 +35,7 @@
        
         <ion-item>
           <ion-label position="floating">Precio <ion-text color="danger">*</ion-text></ion-label>
-          <ion-input number required name="forPrecio" #newPrecio="ngModel" [(ngModel)]="lista.precio" type="number"   min="1" max="200" ></ion-input>
+          <ion-input number required name="forPrecio" #newPrecio="ngModel" [(ngModel)]="libro.precio" type="number"   min="1" max="200" ></ion-input>
 
          
 
@@ -51,7 +51,7 @@
      
         <ion-item>
           <ion-label>Formato</ion-label>
-          <ion-select required name="forTipo" #newTipo="ngModel" [(ngModel)]="lista.tipo"    >
+          <ion-select required name="forTipo" #newTipo="ngModel" [(ngModel)]="libro.tipo"    >
             <ion-select-option value="digital">Digital</ion-select-option>
             <ion-select-option value="fisico">Físico</ion-select-option>
             <ion-select-option value="ambos">Ambos</ion-select-option>
@@ -65,7 +65,7 @@
      
         <ion-item>
           <ion-label position="floating">Descripcion <ion-text color="danger">*</ion-text></ion-label>
-          <ion-input   required name="forDescripcion" #newDescripcion="ngModel" [(ngModel)]="lista.descripcion" type="text"></ion-input>
+          <ion-input   required name="forDescripcion" #newDescripcion="ngModel" [(ngModel)]="libro.descripcion" type="text"></ion-input>
               <ion-note slot="error"  *ngIf="newDescripcion.touched">
                 <span *ngIf="newDescripcion.errors?.['required']">Es Requerido</span>
               </ion-note>
@@ -74,7 +74,7 @@
  
         <ion-item>
           <ion-label position="floating">Slug <ion-text color="danger">*</ion-text></ion-label>
-          <ion-input  required name="forSlug" #newSlug="ngModel" [(ngModel)]="lista.slug" type="text" minlength= 3 maxlength= 10></ion-input>
+          <ion-input  required name="forSlug" #newSlug="ngModel" [(ngModel)]="libro.slug" type="text" minlength= 3 maxlength= 10></ion-input>
 
 
               <ion-note slot="error"  *ngIf="newSlug.touched">
@@ -87,11 +87,10 @@
        
         <ion-button block color="primary" type="submit" [disabled]="formLibro.form.invalid"   >
           Enviar
-        </ion-button> -->
+        </ion-button> 
       </form>
     </ion-card-content>
-
-  
+ 
   </ion-card> 
   
 </ion-content>

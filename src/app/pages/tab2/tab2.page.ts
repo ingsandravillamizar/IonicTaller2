@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { ValidatorEspaciosValidator } from 'src/app/directives/validar-espacios.directive';
 import { Libro } from 'src/app/models/libro';
+import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-tab2',
@@ -11,9 +12,9 @@ import { Libro } from 'src/app/models/libro';
 })
 export class Tab2Page implements OnInit {
   formLibro: FormGroup;
-  lista:Libro;
+  // libro:Libro;
+  listaLibros :Array<Libro>;
 
-  listaLibros :Array<any>;
   constructor(private formBuilder: FormBuilder, private alertController: AlertController) {
     this.formLibro = this.formBuilder.group(
       {
@@ -28,18 +29,15 @@ export class Tab2Page implements OnInit {
         
       }
     ),
-    this.lista = new (Libro);
+    // this.libro = new Libro;
     this.listaLibros = [];
+
   }
 
-  ngOnInit() {
-  }
+  
 
-  onSubmit() {
-
-    this.presentAlert();
-  }
-
+  onSubmit() { this.presentAlert(); }
+  nuevoLibro( ){   this.listaLibros.push ( this.formLibro.value);  }
 
 
   async presentAlert() {
@@ -54,35 +52,21 @@ export class Tab2Page implements OnInit {
             text:'Aceptar',
             role:'Aceptar',
             handler:()=>{
-                console.log(this.formLibro.value);
-                this.nuevoLibro(this.formLibro.value);
+                // console.log(this.formLibro.value);
+                this.nuevoLibro();
             }
           },
           {
             text:'Cancelar', 
-            
-             
-            
           }
         ],
-  
-       
       }
     );
-  
     alert.present();
   }
 
 
-  nuevoLibro(form:any){
-
-    //this.lista = new(this.loginForm.value);
-    this.listaLibros.push (
-      {titulo:form.titulo,precio:form.precio,tipo:form.tipo,descripcion:form.descripcion,slug:form.slug }
-    );
-   
-
-  }
+ 
   //getters
   get tituloctrl(){ return this.formLibro.get('titulo') }
   get precioctrl(){ return this.formLibro.get('precio') }
@@ -90,5 +74,11 @@ export class Tab2Page implements OnInit {
   get descctrl(){ return this.formLibro.get('descripcion') }
   get slugctrl(){ return this.formLibro.get('slug') }
 
+  ngOnInit(): void {
+    //Consultar Api para llena datos
+ 
+  }
+
+   
 
 }

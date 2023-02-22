@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tab5</ion-title>
+  </ion-toolbar>
+  <h1> Ingreso al tab # {{contador}}</h1>
+  <h2> Nombre:  {{nom}}</h2>
+</ion-header>
+
+<ion-content>
+  
+<ion-list>
+  <ion-item *ngFor="let item of datos">
+    <ion-label>{{item}}</ion-label>
+  </ion-item>
+</ion-list>
+<ion-button (click)="asincrona()">
+  <ion-icon slot="icon-only" name="add"></ion-icon>
+</ion-button>
+
+
+<ion-button (click)="asincronaUno()">
+  <ion-icon slot="icon-only" name="add"></ion-icon>
+</ion-button>
+
+</ion-content>

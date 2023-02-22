@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista de Lenguajes de Programacion</ion-title>
+    
+  </ion-toolbar>
+   <ion-searchbar #search (ionChange)="busqueda(search.value)" placeholder="Filtrar libro"   showCancelButton="always"></ion-searchbar> -->
+</ion-header>
+
+<ion-content>
+  <ion-list lines="inset">
+    <ion-item *ngFor="let item of listaFiltrados ">
+
+      <ion-label>{{item}}</ion-label>
+    </ion-item>
+   
+  </ion-list> 
+</ion-content>

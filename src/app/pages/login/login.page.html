@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <ion-label>Nombre</ion-label>
+  <ion-input [(ngModel)]="name" type="text" placeholder="Awesome Input"></ion-input>
+</ion-item>
+<ion-button (click)="guardar()">
+  <ion-icon slot="icon-only" name="add"></ion-icon>
+</ion-button>
+</ion-content>
